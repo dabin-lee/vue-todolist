@@ -27,10 +27,12 @@
         add
       </button>
     </div>
+    <div>{{ getDateAndTime(createAt) }}</div>
   </div>
 </template>
 
 <script>
+import { dataFormat } from "../mixins/dateFormat";
 import ListItem from "./todolist/ListItem.vue";
 export default {
   components: { ListItem },
@@ -39,7 +41,11 @@ export default {
       todoItems: [],
       itemValue: "",
       count: 0,
+      createAt: {},
     };
+  },
+  created() {
+    this.createAt = new Date();
   },
   methods: {
     addItem() {
@@ -74,6 +80,7 @@ export default {
       }
     },
   },
+  mixins: [dataFormat],
   mounted() {
     this.newItem();
   },
