@@ -87,7 +87,10 @@ export default {
   computed: {
     countSum() {
       const checked = this.todoItems.filter((item) => item.checked === true);
-      return checked.length;
+      const totalCount = this.todoItems.length - checked.length;
+      console.log(this.todoItems.length);
+      console.log(checked.length);
+      return totalCount;
     },
   },
 };
